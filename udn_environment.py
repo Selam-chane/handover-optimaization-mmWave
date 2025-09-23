@@ -31,7 +31,7 @@ class UDNEnvironment:
 
         # System parameters
         self.bs_tx_power = bs_tx_power
-        self.area_radius = 200
+        self.area_radius = area_radius
         self.bandwidth = bandwidth
         self.channel_model = channel_model
         self.carrier_freq = carrier_freq
@@ -41,7 +41,7 @@ class UDNEnvironment:
         self.tx_gain = tx_gain
         self.rx_gain = rx_gain
         self.num_users = num_users
-        self.num_cells = 25
+        self.num_cells = num_cells
         self.learning_window = round(learning_window * self.frame_duration, 3)
 
         # System clock
@@ -56,6 +56,8 @@ class UDNEnvironment:
 
         # User positions and mobility parameters
         self.user_displacement = np.zeros(self.num_users)
+        self.area_radius=0.4*self.area_radius
+        self.num_cells= int(0.5* self.num_cells)
         self.user_positions = np.random.uniform(-self.area_radius, self.area_radius, [self.num_users, 2])
         self.user_serving_cell = np.random.randint(0, self.num_cells, self.num_users)
         self.user_target_cell = np.random.randint(0, self.num_cells, self.num_users)
