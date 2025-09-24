@@ -21,8 +21,8 @@ class UDNEnvironment:
                  rx_gain=8,               # dB
                  learning_window=10000,
                  rrc_states=('Idle', 'Connected', 'Inactive'),
-                 rrc_state_prob=np.array([2, 6, 2], dtype=np.float32),
-                 seed=42):
+                 rrc_state_prob=np.array([4, 6, 4], dtype=np.float32),
+                 seed=45):
 
         # Set seed for reproducibility
         if seed is not None:
@@ -78,7 +78,7 @@ class UDNEnvironment:
         self.user_bandwidth = np.zeros(self.num_users)
         self.reported_state = np.zeros((self.num_users, self.num_cells))
         self.handover_count = 0
-        self.shadowing_variance = np.random.normal(0, 8.2)
+        self.shadowing_variance = np.random.normal(0, 4.2)
 
    
     def regenerate_rrc_states(self):    

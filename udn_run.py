@@ -12,7 +12,7 @@ import udn_utils
 
 ITERATIONS = 10
 FRAMES_PER_ITER = 1000
-REPORT_PERIOD = 50   
+SKIPPING_PERIOD = 50   
 UPDATE_PERIOD = 200  
 
 LR_A = 0.002
@@ -52,7 +52,7 @@ for i_iter in range(ITERATIONS):
         UDN_network.measure_snr()
 
         # Every 50 frames → observe state & act
-        if (iframe + 1) % REPORT_PERIOD == 0:
+        if (iframe + 1) % SKIPPING_PERIOD == 0:
             snr_vec = UDN_network.snr_matrix[0]
             state_vec = udn_utils.gen_state(snr_vec)
             s = state_vec.reshape(1,-1)           
@@ -84,37 +84,36 @@ for i_iter in range(ITERATIONS):
 
 
     last_rate = rate_per_iter[-1] if rate_per_iter else 0.0
+    #last_rate = min(rate_per_iter)
     total_HO = sum(HO_per_iter)
     mean_reward = np.mean(reward_per_iter) if reward_per_iter else 0.0
-    iter_utility = 0.02 * last_rate - 0.1 * total_HO
-    failed_links_no = np.sum(np.array(rate_per_iter) < 50.0)
+    
+    
 
 
     rate_list.append(last_rate)
     HO_list.append(total_HO)
     reward_list.append(mean_reward)
-    utility_list.append(iter_utility)
-    failed_link_list.append(failed_links_no)
+    
+    
 
 
     print(f"\nIteration {i_iter}")
-    print(f"Rate (last block min): {last_rate:.3f} Mbps")
-    print(f"HO count: {total_HO}")
+    print(f"Throughput: {last_rate:.3f} Mbps")
+    print(f"Handover Rate: {total_HO/10}")
     print(f"Mean reward: {mean_reward:.4f}")
-    print(f"Block rewards: {np.array(reward_per_iter)}")
+    
 
     # Periodic file logging
     if (i_iter + 1) % 5 == 0:
         with open(LOG_TRAIN, "a+", encoding="utf-8") as f:
             for i in range(len(rate_list)):
                 print(
-                    "Reward: %.4f, HO: %.4f, QoE: %.4f, Utility: %.4f, FailedLinks: %.4f"
+                    "Reward: %.4f, Handover Rate: %.4f, Throughput: %.4f"
                     % (
                         reward_list[i],
-                        HO_list[i],
+                        HO_list[i]/10,
                         rate_list[i],
-                        utility_list[i],
-                        failed_link_list[i],
                     ),
                     file=f,
                 )
