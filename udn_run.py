@@ -20,7 +20,9 @@ LR_C = 0.01
 GAMMA = 0.9
 ENTROPY_BETA = 0.005
 
-LOG_TRAIN = os.path.expanduser( r"D:/RL codes/MAIN_LOOP_TEST.txt")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_TRAIN = os.path.join(BASE_DIR, "rl_training_output.txt")
+
 
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True

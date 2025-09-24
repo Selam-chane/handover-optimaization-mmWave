@@ -1,4 +1,3 @@
-
 #A2C (Advantage Actor-Critic) Agent in TensorFlow v1
 
 import numpy as np
