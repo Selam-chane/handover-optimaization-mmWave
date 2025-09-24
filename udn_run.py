@@ -10,7 +10,7 @@ from udn_a2c_agent import A2CAgent
 import udn_utils
 
 
-ITERATIONS = 10
+ITERATIONS = 10000
 FRAMES_PER_ITER = 1000
 SKIPPING_PERIOD = 50   
 UPDATE_PERIOD = 200  
