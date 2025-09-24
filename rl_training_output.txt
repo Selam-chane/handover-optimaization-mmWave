@@ -1,0 +1,10 @@
+Reward: -1.8503, Handover Rate: 2.0000, Throughput: 76.9260
+Reward: -2.0000, Handover Rate: 1.9000, Throughput: 85.7704
+Reward: -1.7006, Handover Rate: 2.0000, Throughput: 37.4261
+Reward: 0.5420, Handover Rate: 1.6000, Throughput: 76.9260
+Reward: -1.6729, Handover Rate: 1.9000, Throughput: 85.7704
+Reward: -1.8226, Handover Rate: 2.0000, Throughput: 155.3721
+Reward: -2.0000, Handover Rate: 2.0000, Throughput: 89.4763
+Reward: -2.0000, Handover Rate: 1.8000, Throughput: 52.0762
+Reward: -1.8137, Handover Rate: 2.0000, Throughput: 76.9260
+Reward: -1.6452, Handover Rate: 2.0000, Throughput: 51.1693

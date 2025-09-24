@@ -24,7 +24,7 @@ class UDNEnvironment:
                  rrc_state_prob=np.array([4, 6, 4], dtype=np.float32),
                  seed=45):
 
-        # Set seed for reproducibility
+        # Set seed EXPERIMENT_SEEDS = [0, 42, 45, 100, 123]
         if seed is not None:
             np.random.seed(seed)
             random.seed(seed)
@@ -61,7 +61,7 @@ class UDNEnvironment:
         self.user_positions = np.random.uniform(-self.area_radius, self.area_radius, [self.num_users, 2])
         self.user_serving_cell = np.random.randint(0, self.num_cells, self.num_users)
         self.user_target_cell = np.random.randint(0, self.num_cells, self.num_users)
-        self.user_speeds = np.random.uniform(10, 100, self.num_users)  # constant speed for all users
+        self.user_speeds = np.random.uniform(10, 100, self.num_users)  # Low mobility scenario= 40km/h or 11 m/s High mobility scenario= 500 km/h or 139 m/s 
         self.user_directions = np.random.uniform(-180, 180, self.num_users)
         self.cell_ids = np.arange(num_cells)
         self.cell_positions = np.zeros((len(self.cell_ids), 2))
