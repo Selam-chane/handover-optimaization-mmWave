@@ -24,7 +24,7 @@ class UDNEnvironment:
                  rrc_state_prob=np.array([4, 6, 4], dtype=np.float32),
                  seed=45):
 
-        # Set seed EXPERIMENT_SEEDS = [0, 42, 45, 100, 123]
+        # Set seed  = [0, 42, 45, 100, 123]
         if seed is not None:
             np.random.seed(seed)
             random.seed(seed)
